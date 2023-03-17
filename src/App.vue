@@ -1,30 +1,32 @@
 <template>
-  <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </nav>
-  <router-view/>
+  <div class="container">
+    <Header/>
+    <Mission/>
+    <Map/>
+    <Mission2/>
+    <Benifit/>
+    <Benifit2/> 
+    <Gallery/>
+  </div>
 </template>
 
-<style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+<script lang="ts">
+import Benifit from './components/Benifit.vue';
+import Benifit2 from './components/Benifit2.vue';
+import Gallery from './components/Gallery.vue';
+import Header from './components/Header.vue';
+import Map from './components/Map.vue';
+import Mission from './components/Mission.vue';
+import Mission2 from './components/Mission2.vue';
+export default {
+  components: {
+    Header,
+    Mission,
+    Map,
+    Mission2,
+    Benifit,
+    Benifit2,
+    Gallery
 }
-
-nav {
-  padding: 30px;
-
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
 }
-</style>
+</script>
