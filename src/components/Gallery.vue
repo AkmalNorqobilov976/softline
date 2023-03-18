@@ -14,7 +14,7 @@
             </div>
         </div>
         <div class="slider" ref="sliderRef">
-            <div class="slider__item unselected " v-for="(img, i) in images" :class="{ 'selected': i == selectedImg }" :key="i">
+            <div class="slider__item unselected "  v-for="(img, i) in images" :class="{ 'selected': i == selectedImg }" :key="i">
                 <img :src="img" alt="">
             </div>
         </div>
@@ -34,6 +34,8 @@ gsap.registerPlugin(ScrollTrigger);
 export default {
     setup() {
         const selectedImg = ref(0);
+        const touchStartX = ref(0);
+        const touchEndX = ref(0);
         const sliderRef = ref<HTMLElement>();
         const images = ref([
             require('@/assets/images/slide1.jpg'),
@@ -43,7 +45,20 @@ export default {
             require('@/assets/images/slide5.jpg')
         ]);
 
+        const onTouchStart = (e: any) => {
+            console.log(e);
+            
+            // touchStartX.value = e.pageX;
+            
+        }
 
+        const onTouchEnd = (e: any) => {
+            touchEndX.value = e.pageX;
+            console.log(touchStartX.value, touchEndX.value);
+            
+        }
+
+        // const onTouchEnd = ()
         onMounted(() => {
             ScrollTrigger.create({
                 trigger: '.gallery',
@@ -106,7 +121,9 @@ export default {
             sliderRef,
             onSelectImg,
             images,
-            selectedImg
+            selectedImg,
+            onTouchStart,
+            onTouchEnd
         }
     }
 }
@@ -125,6 +142,7 @@ export default {
         &__btns {
             display: flex;
             gap: 2rem;
+            flex: 1 1 auto;
             button {
                 border: none;
                 outline: none;
@@ -177,6 +195,31 @@ export default {
                 background: #A30C33 !important;
                 opacity: 1;
             }
+        }
+    }
+    
+    @media screen and (max-width: 36rem) {
+        .header {
+            margin-bottom: 1.5rem;
+            padding: 0 1rem;
+            &__title {
+                font-size: 2.4rem;
+            }
+
+            &__btns {
+                gap: .5rem;
+                button {
+                    padding: .3rem .4rem;
+                    img {
+                        width: 1rem;
+                        height: 1rem;
+                    }
+                }
+            }
+        }
+
+        .slider {
+            height: 21rem;
         }
     }
 </style>

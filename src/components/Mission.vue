@@ -6,23 +6,23 @@
                     a также широкий спектр IT-услуг. 
         </h1>
         <div class="d-flex">
-            <div class="mission__statistic col-4">
+            <div class="mission__statistic col-4 col-sm-6">
                 <p class="mission__statistic--number"> > 30 лет</p>
                 <p class="mission__statistic--text">на IT-рынке</p>
             </div>
-            <div class="mission__statistic col-4">
+            <div class="mission__statistic col-4 col-sm-6">
                 <p class="mission__statistic--number"> 4600</p>
                 <p class="mission__statistic--text">сотрудников в России</p>
             </div>
-            <div class="mission__statistic col-4">
+            <div class="mission__statistic col-4 col-sm-6" >
                 <p class="mission__statistic--number">25</p>
                 <p class="mission__statistic--text">городов России</p>
             </div>
-            <div class="mission__statistic col-6">
+            <div class="mission__statistic col-6 col-sm-6">
                 <p class="mission__statistic--number"> 2000 +</p>
                 <p class="mission__statistic--text">разработчиков</p>
             </div>
-            <div class="mission__statistic col-6">
+            <div class="mission__statistic col-6 col-sm-12">
                 <p class="mission__statistic--number">3000+</p>
                 <p class="mission__statistic--text">сотрудников ежегодно проходят оценку и обучение</p>
             </div>
@@ -95,6 +95,30 @@ import { defineComponent, onMounted } from 'vue';
                 font-size: 1.8rem;
                 line-height: 150%;
                 color: $black;
+            }
+        }
+    }
+
+    @media screen and (max-width: 36rem) {
+        .mission {
+            margin-top: 6rem;
+            margin-right: 0;
+            margin-left: 0;
+
+            &__text {
+                font-size: 1.6rem;
+                padding: 2.4rem .5rem;
+            }
+
+            &__statistic {
+                margin: 2.4rem 0;
+                &--number {
+                    font-size: 4rem;
+                }
+
+                &--text {
+                    font-size: 1.6rem;
+                }
             }
         }
     }

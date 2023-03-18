@@ -10,11 +10,12 @@
                             {{ item.name }}
                         </li>
                     </ul>
+
                 </div>
             </div>
 
             <ul class="map-menu-list">
-                <li class="map-menu-list__item">Все</li>
+                <li class="map-menu-list__item active">Все</li>
                 <li v-for="(item, i) in places" :key="i"> {{ item.name }} </li>
             </ul>
         </div>
@@ -33,77 +34,77 @@ export default defineComponent({
     setup() {
         const places = ref([
             {
-                name: 'Москва',
+                name: "Москва",
                 children: []
             },
             {
-                name: 'Центр',
+                name: "Центр",
                 children: [
-                    { name: 'Воронеж' },
-                    { name: 'Ярославль' },
-                    { name: 'Белгород' }
+                    { name: "Воронеж" },
+                    { name: "Ярославль" },
+                    { name: "Белгород" }
                 ]
             },
             {
-                name: 'Северо-Запад',
+                name: "Северо-Запад",
                 children: [
-                    { name: 'Санкт-Петербург'},
-                    { name: 'Калининградд' }
+                    { name: "Санкт-Петербург" },
+                    { name: "Калининградд" }
                 ]
             },
             {
-                name: 'Юг',
+                name: "Юг",
                 children: [
-                    { name: 'Ростов-на-Дону' },
-                    { name: 'Краснодар' },
-                    { name: 'Волгоград' }
+                    { name: "Ростов-на-Дону" },
+                    { name: "Краснодар" },
+                    { name: "Волгоград" }
                 ]
             },
             {
-                name: 'Волга',
+                name: "Волга",
                 children: [
-                    { name: 'Казань' },
-                    { name: 'Самара' },
-                    { name: 'Уфа' },
-                    { name: 'Оренбург' },
-                    { name: 'Нижний Новгород' }
+                    { name: "Казань" },
+                    { name: "Самара" },
+                    { name: "Уфа" },
+                    { name: "Оренбург" },
+                    { name: "Нижний Новгород" }
                 ]
             },
             {
-                name: 'Урал',
+                name: "Урал",
                 children: [
-                    { name: 'Екатеринбург' },
-                    { name: 'Челябинск' },
-                    { name: 'Пермь' },
-                    { name: 'Сургут' },
-                    { name: 'Тюмень' },
-                    { name: 'Ижевск' }
+                    { name: "Екатеринбург" },
+                    { name: "Челябинск" },
+                    { name: "Пермь" },
+                    { name: "Сургут" },
+                    { name: "Тюмень" },
+                    { name: "Ижевск" }
                 ]
             },
             {
-                name: 'Сибирь',
+                name: "Сибирь",
                 children: [
-                    { name: 'Новосибирск ' },
-                    { name: 'Омск' },
-                    { name: 'Томск ' },
-                    { name: 'Красноярск' },
-                    {name: 'Иркутск' }
+                    { name: "Новосибирск " },
+                    { name: "Омск" },
+                    { name: "Томск " },
+                    { name: "Красноярск" },
+                    { name: "Иркутск" }
                 ]
             },
             {
-                name: 'Дальний Восток',
+                name: "Дальний Восток",
                 children: [
-                    { name: 'Хабаровск' },
-                    { name: 'Владивосток' }
+                    { name: "Хабаровск" },
+                    { name: "Владивосток" }
                 ]
             }
-        ])
-        const toggleMenu = ref(false);      
+        ]);
+        const toggleMenu = ref(false);
         return {
             places,
             toggleMenu
-        }
-    }
+        };
+    },
 })
 </script>
 
@@ -116,16 +117,21 @@ export default defineComponent({
             justify-content: space-between;
             align-items: center;
             padding: 3rem;
+            width: 100%;
+            overflow-x: scroll;
+            &::-webkit-scrollbar {
+                display: none;
+            }
         }
         &-menu-list {
-
             display: flex;
             align-items: center;
             gap: 3rem;
             font-weight: 600;
             font-size: 1.8rem;
             line-height: 2rem;
-            &.active {
+           
+            .active {
                 color: $red;
                 border-bottom: .2rem solid $red;
             }
@@ -148,7 +154,7 @@ export default defineComponent({
                 top: 3rem;
                 display: flex;
                 gap: 3rem;
-                
+                z-index: 10;
             }
         }
 
@@ -167,5 +173,53 @@ export default defineComponent({
                 line-height: 20px;
             }
         }   
+
+        &__body {
+            width: 100%;
+            height: 100%;
+            text-align: left;
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+        }
+    }
+
+    @media screen and (max-width: 36rem) {
+        .map {
+            &__header {
+                padding: 1.8rem .5rem;
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            &__menu {
+                &--title {
+                    font-size: 2rem;
+                }
+                
+                &--items {
+                    width: 34rem;
+                    flex-wrap: wrap;
+                    height: 40rem;
+                    overflow-x: scroll;
+                }
+            }
+
+            &-menu-list {
+                font-size: 1.4rem;
+                gap: 1.6rem;
+                margin-top: 2rem;
+                width: max-content;
+                li {
+                    max-width: max-content;
+                }
+            }
+
+            &__list {
+
+            }
+        }
     }
 </style>

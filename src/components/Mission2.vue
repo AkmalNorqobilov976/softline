@@ -66,4 +66,21 @@ export default {
         }
 
     }
+
+    @media screen and (max-width: 36rem) {
+        .mission2 {
+            margin: 5rem 0;
+            padding: 5rem .5rem;
+            background-size: 17rem 17rem;
+
+            &__title {
+                font-size: 2.8rem;
+                margin-bottom: 1rem;
+            }
+
+            &__info {
+                font-size: 1.6rem;
+            }
+        }
+    }
 </style>

@@ -30,7 +30,7 @@
         <h1 class="header__title">
             Поставщик услуг цифровой трансформации и кибербезопасности
         </h1>
-        <button class="header__btn">На сайт</button>
+        <button class="header__btn">Наш сайт</button>
         <div class="header__img">
             <img :src="require('@/assets/images/header.jpg')" alt="">
         </div>
@@ -107,6 +107,58 @@ export default defineComponent({
             top: 0;
             left: 0;
             z-index: -1;
+            
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
         }
+    }
+
+
+    @media screen and (max-width: 36rem) {
+     .navbar {
+        padding: 1.6rem 0;
+        flex-direction: column;
+        font-size: 1.4rem;
+        &__logo {
+            text-align: left;
+            align-self: self-start;
+            margin-bottom: 1.6rem;
+        }
+        &__links {
+            align-self: self-start;
+            display: grid;
+            grid-template-columns: min-content max-content;
+            gap: 1rem;
+        }
+
+        &__link {
+            line-height: 1.6rem;
+            font-size: 1.4rem;
+            max-width: min-content;
+        }
+     }   
+
+     .header {
+        padding: 4rem .5rem;
+        &__title {
+            font-size: 2.8rem;
+            margin-bottom: 2.65rem;
+            
+        }
+
+        &__btn {
+            font-size: 1.6rem;
+            padding: .65rem 2.55rem;
+            line-height: 100%;
+        }
+        &__img {
+            width: 100%;
+            height: 30rem;
+            
+        }
+     }
     }
 </style>

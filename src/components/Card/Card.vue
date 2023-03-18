@@ -1,19 +1,20 @@
 <template>
-    <div class="card">
+    <div class="card" ref="cardRef" :class="{ toggle }">
         <div class="card__img">
             <img :src="img" alt="" />
         </div>
         <div class="card__info">
-            <p class="card__info--title">{{ title }}</p>
+            <p @click="toggle = !toggle" class="card__info--title">{{ title }} <span  :class="{rotate: toggle}"><img :src="require('@/assets/svgs/arrow-down.svg')" alt=""/></span></p>
             <p class="card__info--description">{{ description }}</p>
         </div>
     </div>
 </template>
 
 <script lang="ts">
-import { defineComponent } from "vue";
-
-
+import gsap from 'gsap'
+import { defineComponent, onMounted, ref, watch } from "vue";
+import { ScrollTrigger } from 'gsap/dist/ScrollTrigger'
+gsap.registerPlugin(ScrollTrigger)
 export default defineComponent({
    props: {
     img: {
@@ -25,7 +26,41 @@ export default defineComponent({
     description: {
         type: String
     }
-   } 
+   },
+
+   setup() {
+        const toggle = ref(false);
+        const cardRef = ref<HTMLElement>()!;
+        const tl = gsap.timeline();
+        watch(toggle, (newValue) => {
+            console.log(newValue);
+            
+            tl.to((cardRef.value as HTMLElement), {
+                height: toggle.value ? '26rem' : '7.6rem',
+                duration: .5
+            })
+        });
+
+        // onMounted(() => {
+        //     const direction = Math.random();
+        //     ScrollTrigger.create({
+        //         trigger: '.benifit',
+        //         onEnter() {
+        //             gsap.from(cardRef.value as HTMLElement, {
+        //                 opacity: 1,
+        //                 // delay: .3,
+        //                 // y: direction> .5 ? Math.random() * 500: -Math.random() * 500,
+        //                 // x: direction> .5 ? Math.random() * 500: -Math.random() * 500,
+        //             })
+        //         }
+        //     })
+        // })
+
+        return {
+            toggle,
+            cardRef
+        }
+   }
 });
 </script>
 
@@ -33,6 +68,7 @@ export default defineComponent({
     .card {
         position: relative;
         overflow: hidden;
+        transition: all .5s ease !important;
         &__img {
             width: 100%;
             height: 26rem;
@@ -58,6 +94,16 @@ export default defineComponent({
                 font-size: 2.4rem;
                 line-height: 100%;
                 margin-bottom: 2.8rem;
+                display: flex;
+                justify-content: space-between;
+                align-items: baseline;
+                span {
+                    display: none;
+                    img {
+                        width: 1.5rem;
+                        height: 1.5rem;
+                    }
+                }
             }
 
             &--description {
@@ -68,6 +114,27 @@ export default defineComponent({
         }
         &:hover &__info {
             transform: translateY(0rem);
+        }
+    }
+
+    @media screen and (max-width: 36rem) {
+        .card {
+            height: 7.6rem;
+            
+            &__info {
+                transform: translateY(0rem);
+                padding: 2.5rem 2rem;
+
+                &--title {
+                    span {
+                        display: unset;
+                    }
+                }
+            }
+
+        }
+        .toggle {
+            height: 26rem;
         }
     }
 </style>

@@ -64,14 +64,7 @@ export default defineComponent({
                         opacity: 0,
                         duration: 1
                     });
-                    const direction = Math.random();
-                    const element = document.querySelector('.benifit__card')!;
-                    tl.from(element.children, {
-                        opacity: 0,
-                        delay: .3,
-                        y: direction> .5 ? Math.random() * 500: -Math.random() * 500,
-                        x: direction> .5 ? Math.random() * 500: -Math.random() * 500,
-                    })
+                    
                 }
             })
         })
@@ -93,6 +86,19 @@ export default defineComponent({
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 2rem;
+        }
+    }
+
+    @media screen and (max-width: 36rem) {
+        .benifit {
+            &__title {
+                font-size: 2.8rem;
+                padding: 0;
+                margin-bottom: 1.5rem;
+            }
+            &__card {
+                grid-template-columns: 1fr;
+            }
         }
     }
 </style>

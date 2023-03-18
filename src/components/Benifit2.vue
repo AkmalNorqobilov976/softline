@@ -12,14 +12,14 @@ import BenifitCard from './Card/BenifitCard.vue';
             <BenifitCard :img="require('@/assets/svgs/Frame 18625240.svg')" :title="'Выходной в день рождения'"/>
             <BenifitCard :img="require('@/assets/svgs/Frame 18625242.svg')" :title="'Корпоративная мобильная связь'"/>
             <BenifitCard :img="require('@/assets/svgs/Frame 18625244.svg')" :title="'Корпоративные скидки на спорт'"/>
-            <BenifitCard :img="require('@/assets/svgs/Vector.svg')" :title="'LTI'"/>
+            <BenifitCard class="last-card" :img="require('@/assets/svgs/Vector.svg')" :title="'LTI'"/>
         </div>
         <h1 class="benifit--programm-title">Программа дополнительной мотивации</h1>
         <h1 class="benifit--programm-subtitle">доплата 12% от суммы</h1>
         <div class="benifit__programm">
             <BenifitCard :img="require('@/assets/svgs/Frame 18625247.svg')" :title="'Дмс'"/>
             <BenifitCard :img="require('@/assets/svgs/Frame 18625238.svg')" :title="'Выходной в день рождения'"/>
-            <BenifitCard :img="require('@/assets/svgs/Icon.svg')" :title="'Корпоративная мобильная связь'"/>
+            <BenifitCard class="last-card" :img="require('@/assets/svgs/Icon.svg')" :title="'Корпоративная мобильная связь'"/>
         </div>
         
     </section>
@@ -103,6 +103,40 @@ export default {
             margin: 5rem 31rem;
             display: grid;
             grid-template-columns: repeat(3, 1fr);
+        }
+    }
+
+    @media screen and (max-width: 36rem) {
+        .benifit {
+            margin-top: 7.4rem;
+
+            &--pakets-title {
+                font-size: 2.8rem;
+            }
+
+            &__pakets {
+                grid-template-columns: repeat(2, 1fr);
+                .last-card {
+                    grid-column: 1/3;
+                }
+            }
+            &--programm-title {
+                font-size: 2.2rem;
+            }
+
+            &--programm-subtitle {
+                font-size: 2.2rem;
+            }
+            
+            &__programm {
+                grid-template-columns: repeat(2, 1fr);
+                margin: 2.5rem auto;
+                gap: 1rem;
+
+                .last-card {
+                    grid-column: 1/3;
+                }
+            }
         }
     }
 </style>
