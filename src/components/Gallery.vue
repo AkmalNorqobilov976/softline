@@ -19,8 +19,8 @@
             </div>
         </div>
         <div class="slider-pagination">
-            <div v-for="i in 5" :key="i" class="slider-pagination__item" :class="{'active':  i-1 == selectedImg }">
-            </div>
+            <p v-for="i in 5" :key="i" class="slider-pagination__item" :class="{active:  (i-1) == selectedImg }">
+            </p>
         </div>
     </div>
 </template>
@@ -34,8 +34,6 @@ gsap.registerPlugin(ScrollTrigger);
 export default {
     setup() {
         const selectedImg = ref(0);
-        const touchStartX = ref(0);
-        const touchEndX = ref(0);
         const sliderRef = ref<HTMLElement>();
         const images = ref([
             require('@/assets/images/slide1.jpg'),
@@ -45,20 +43,6 @@ export default {
             require('@/assets/images/slide5.jpg')
         ]);
 
-        const onTouchStart = (e: any) => {
-            console.log(e);
-            
-            // touchStartX.value = e.pageX;
-            
-        }
-
-        const onTouchEnd = (e: any) => {
-            touchEndX.value = e.pageX;
-            console.log(touchStartX.value, touchEndX.value);
-            
-        }
-
-        // const onTouchEnd = ()
         onMounted(() => {
             ScrollTrigger.create({
                 trigger: '.gallery',
@@ -95,7 +79,6 @@ export default {
 
 
         const onSelectImg = (counter: number) => {
-            console.log(counter);
             sliderRef.value?.children[selectedImg.value].classList.remove('selected');
             sliderRef.value?.children[selectedImg.value].classList.add('unselected');
             selectedImg.value = selectedImg.value + counter;
@@ -121,9 +104,7 @@ export default {
             sliderRef,
             onSelectImg,
             images,
-            selectedImg,
-            onTouchStart,
-            onTouchEnd
+            selectedImg
         }
     }
 }
@@ -141,8 +122,8 @@ export default {
 
         &__btns {
             display: flex;
+           text-align: right;
             gap: 2rem;
-            flex: 1 1 auto;
             button {
                 border: none;
                 outline: none;
@@ -191,11 +172,11 @@ export default {
                 width: 100%;
 
             }
-            .active {
-                background: #A30C33 !important;
-                opacity: 1;
-            }
         }
+    }
+    .active {
+        background: #A30C33;
+        opacity: 1;
     }
     
     @media screen and (max-width: 36rem) {
@@ -204,6 +185,7 @@ export default {
             padding: 0 1rem;
             &__title {
                 font-size: 2.4rem;
+                flex: 1 1 auto;
             }
 
             &__btns {
