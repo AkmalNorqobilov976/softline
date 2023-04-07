@@ -186,7 +186,7 @@ export default defineComponent({
         }
     }
 
-    @media screen and (max-width: 36rem) {
+    @media screen and (max-width: 60rem) {
         .map {
             &__header {
                 padding: 1.8rem .5rem;

@@ -179,7 +179,7 @@ export default {
         opacity: 1;
     }
     
-    @media screen and (max-width: 36rem) {
+    @media screen and (max-width: 60rem) {
         .header {
             margin-bottom: 1.5rem;
             padding: 0 1rem;

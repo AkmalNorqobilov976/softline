@@ -99,7 +99,7 @@ import { defineComponent, onMounted } from 'vue';
         }
     }
 
-    @media screen and (max-width: 36rem) {
+    @media screen and (max-width: 60rem) {
         .mission {
             margin-top: 6rem;
             margin-right: 0;

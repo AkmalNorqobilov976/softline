@@ -117,7 +117,7 @@ export default defineComponent({
     }
 
 
-    @media screen and (max-width: 36rem) {
+    @media screen and (max-width: 60rem) {
      .navbar {
         padding: 1.6rem 0;
         flex-direction: column;

@@ -89,7 +89,7 @@ export default defineComponent({
         }
     }
 
-    @media screen and (max-width: 36rem) {
+    @media screen and (max-width: 60rem) {
         .benifit {
             &__title {
                 font-size: 2.8rem;

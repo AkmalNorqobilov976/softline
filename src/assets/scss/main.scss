@@ -34,17 +34,17 @@ html {
     gap: 8rem;
 }
 
-@media screen and (max-width: 36rem) {
+@media screen and (max-width: 60rem) {
     .container {
         width: 34rem;
         margin: auto
     }
 
 
-@for $width from 1 through $columns {
-	.col-sm-#{$width} {
-		flex-basis: $width / $columns * 100%;
-	}  
-}
+    @for $width from 1 through $columns {
+        .col-sm-#{$width} {
+            flex-basis: $width / $columns * 100%;
+        }  
+    }
 
 }

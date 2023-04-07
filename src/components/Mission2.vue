@@ -67,7 +67,7 @@ export default {
 
     }
 
-    @media screen and (max-width: 36rem) {
+    @media screen and (max-width: 60rem) {
         .mission2 {
             margin: 5rem 0;
             padding: 5rem .5rem;
